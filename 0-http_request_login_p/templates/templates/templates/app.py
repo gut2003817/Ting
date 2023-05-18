@@ -20,7 +20,9 @@ def log_the_user_in(user):
 @app.route('/login', methods=['POST', 'GET'])
 #實作/login 可以吃POST、GET Method，login.html，若驗證成功顯示歡迎訊息
 def login():
-    return""
+    if request.method == "POST":
+        return request.form["username"]
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
